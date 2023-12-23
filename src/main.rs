@@ -1,6 +1,7 @@
 use rand::rng;
 
 fn main(){
+
 let mut hp = 100;
 let mut power = 20;
 
