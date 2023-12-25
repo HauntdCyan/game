@@ -1,11 +1,26 @@
-use rand::rng;
+use rand::Rng;
 
 fn main(){
 
-let mut hp = 100;
-let mut power = 20;
+let enemy = ["Slime", "Cool_guy", "Among_us_impostor", "Jerma_from_twitchtv"];
 
-let player_attack = {power};
-let player_hp = {hp};
+let enemyrng = rand::thread_rng().gen_range(0..=3);//enemy selection
+
+println!("{} appears!!", enemy[enemyrng]);
+
+let hp = 100;
+let power = 20;
+
+println!("HP:{hp}");//the battle intro
+println!("ATTACK POWER:{power}");
+println!("What do you do?");
+println!("ATTACK ITEM RUN");
+
+
+
+
+
 }
+
+
 
