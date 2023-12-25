@@ -21,7 +21,7 @@ println!("ATTACK POWER:{power}");
 println!("What will you do?");
 println!("ATTACK ITEMs RUN");
 
-let mut selection = String::new();
+let mut selction = String::new();
 
 io::stdin()
 .read_line(&mut selection)
