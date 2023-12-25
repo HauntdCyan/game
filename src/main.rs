@@ -16,7 +16,7 @@ println!("ATTACK POWER:{power}");
 println!("What will you do?");
 println!("ATTACK ITEMs RUN");
 
-
+//add choice slection and turns for battles with loopsS
 
 
 
