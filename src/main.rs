@@ -8,7 +8,7 @@ let enemyrng = rand::thread_rng().gen_range(0..=3);//enemy selection
 
 println!("{} appears!!", enemy[enemyrng]);
 
-let hp = 100;
+let hp = 100;//hp will not reset after fights later
 let power = 20;
 
 println!("HP:{hp}");//the battle intro
