@@ -1,4 +1,5 @@
 use rand::Rng;
+use std::io;
 
 fn main(){
 
@@ -20,7 +21,13 @@ println!("ATTACK POWER:{power}");
 println!("What will you do?");
 println!("ATTACK ITEMs RUN");
 
+let mut selection = String::new();
 
+io::stdin()
+.read_line(&mut selection)
+.expect("You cannot do that");
+ 
+ if selection ("attack") {println!("You do a thing");}//fix
 
 println!("test {enemyhp}")
 //add choice slection and turns for battles with loopsS
