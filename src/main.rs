@@ -13,8 +13,8 @@ let power = 20;
 
 println!("HP:{hp}");//the battle intro
 println!("ATTACK POWER:{power}");
-println!("What do you do?");
-println!("ATTACK ITEM RUN");
+println!("What will you do?");
+println!("ATTACK ITEMs RUN");
 
 
 
