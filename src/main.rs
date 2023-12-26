@@ -11,13 +11,16 @@ let enemyatt = rand::thread_rng().gen_range(15..=25);
 
 let enemyrng = rand::thread_rng().gen_range(0..=3);//enemy selection
 
-println!("{} appears!!", enemy[enemyrng]);
+println!("{} appears!!\n", enemy[enemyrng]);
 
 let hp = 100;//hp will not reset after fights later
 let power = 20;
-//battle loop start
+
+loop {//battle loop start
+    
+
 println!("HP:{hp}");//the battle intro
-println!("ATTACK POWER:{power}");
+println!("ATTACK POWER:{power}\n");
 println!("What will you do?");
 println!("ATTACK SKILL RUN");
 
@@ -27,20 +30,22 @@ io::stdin()
 .read_line(&mut selection)
 .expect("You cannot do that");
  
- if let _selection = "attack" {println!("You do a thing");}//fix
- if let _selection = "run" {println!("You ran away");}//fix
+if selection.to_lowercase().contains("attack"){println!("you do a thing");}//fix
+
+
+if selection.to_lowercase().contains("run") { running() }//fix
  //else { println! ("You can't do that");} //guhh??
 println!("test {enemyhp}");
 //add choice slection and turns for battles with loops
 
 
-
+}//end of battle loop
 
 }
 fn running(){//running choice
-let runningchance = rand::thread_rng().gen_range(0..=50);
+let running_chance = rand::thread_rng().gen_range(0..=50);
 
-
+println!("\nYou ran away\n");
 }
 
 
