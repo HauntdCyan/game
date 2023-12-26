@@ -5,7 +5,7 @@ fn main(){
 
 let enemy = ["Slime", "Cool_guy", "Among_us_impostor", "Jerma_from_twitchtv"];
 let enemyhp = rand::thread_rng().gen_range(100..=200);
-let enemyatt = 20;
+let enemyatt = rand::thread_rng().gen_range(15..=25);
 
 
 
@@ -19,17 +19,18 @@ let power = 20;
 println!("HP:{hp}");//the battle intro
 println!("ATTACK POWER:{power}");
 println!("What will you do?");
-println!("ATTACK ITEMs RUN");
+println!("ATTACK SKILL RUN");
 
-let mut selction = String::new();
+let mut selection = String::new();
 
 io::stdin()
 .read_line(&mut selection)
 .expect("You cannot do that");
  
- if selection ("attack") {println!("You do a thing");}//fix
+ if let selection = "attack" {println!("You do a thing");}//fix
+ if let selection = "run" {println!("You ran away")};
 
-println!("test {enemyhp}")
+println!("test {enemyhp}");
 //add choice slection and turns for battles with loopsS
 
 
