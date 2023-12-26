@@ -27,11 +27,11 @@ io::stdin()
 .read_line(&mut selection)
 .expect("You cannot do that");
  
- if let selection = "attack" {println!("You do a thing");}//fix
- if let selection = "run" {println!("You ran away")};
+ if let _selection = ("attack") {println!("You do a thing");}//fix
+ if let _selection = ("run") {println!("You ran away")};//fix
 
 println!("test {enemyhp}");
-//add choice slection and turns for battles with loopsS
+//add choice slection and turns for battles with loops
 
 
 
