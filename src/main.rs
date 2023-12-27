@@ -1,4 +1,4 @@
-use rand::Rng;
+use rand::Rng; //to do list: make skills and run function work
 use std::io;
 
 fn main(){
