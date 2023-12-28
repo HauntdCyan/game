@@ -10,14 +10,16 @@ let enemyatt = rand::thread_rng().gen_range(15..=25);
 
 
 let enemyrng = rand::thread_rng().gen_range(0..=3);//enemy selection
+let enemy_name = enemy[enemyrng];
 
-println!("{} appears!!\n", enemy[enemyrng]);
 
+println!("{enemy_name} appears!!\n",);
+println!("{enemy_name}");
 let hp = 100;//hp will not reset after fights later
 let power = 20;
 
 loop {//battle loop start
-    
+let ran_away = false;    
 
 println!("HP:{hp}");//the battle intro
 println!("ATTACK POWER:{power}\n");
@@ -32,18 +34,17 @@ io::stdin()
 
 if selection.to_lowercase().contains("attack"){println!("\nyou do a thing");}
 
-if selection.to_lowercase().contains("run"){running();}//functions activates no matter what
-
-
+if selection.to_lowercase().contains("run"){let ran_away = running();}//functions activates no matter what
+println!("{ran_away}");//test
 //running output
-let ran_away = running();
-if ran_away == true {println!("you ran away"); break; }
+
+if ran_away == true {break;}//breaks loop if run succeeded
 
  //else { println! ("You can't do that");} //guhh??
 println!(" ene test {enemyhp}");// enemy hp test
 //add choice slection and turns for battles with loops
 
-
+selection.truncate(0);
 }//end of battle loop
 
 }
@@ -53,10 +54,9 @@ let running_chance = rand::thread_rng().gen_range(0..=100);
 
 
 let ran_away = false;
+if running_chance < 50 {println!("\nyou ran away!!\n"); let ran_away = true;}
 
-if running_chance < 50 { let ran_away = true;}//fix
-
-//else if running_chance > 50 { let ran_away =false; println!("\nYou failed to run away :(\n");}//succeeding on running
+else if running_chance > 50 { let ran_away =false; println!("\nYou failed to run away :(\n");}//succeeding on running
 return ran_away;
 }
 
