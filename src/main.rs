@@ -14,17 +14,19 @@ let enemyrng = rand::thread_rng().gen_range(0..=3);//enemy selection
 let enemy_name = enemy[enemyrng];
 let mut enemy_hp = enemyhp;
 
-println!("{enemy_name} appears!! {enemyhp}HP {enemyatt}ATT \n",);
+println!("{enemy_name} appears!! HP: {enemyhp} ATT: {enemyatt}\n",);
 println!("BOB:");//PLACEHOLDER FOR PLAYER'S NAME
-let hp = 100;//hp will not reset after fights later
+let mut hp = 100;//hp will not reset after fights later
 let power = rand::thread_rng().gen_range(15..=20);
 
 loop {//battle loop start
-
+let healing = rand::thread_rng().gen_range(20..=40); //skills
+let guard = rand::thread_rng().gen_range(5..=20);            //finish
+   
     let mut ran_away = false;
 
 println!("HP:{hp}");//the battle intro
-println!("ATTACK POWER:{power}\n");
+println!("ATTACK POWER:20\n");
 println!("What will you do?");
 println!("ATTACK SKILL CHECK RUN");
 
@@ -40,7 +42,7 @@ if selection.to_lowercase().contains("attack"){                                 
  enemy_hp = enemy_hp - power;
 
 
-println!("\nYou attack {enemy_name} causing {power}damage!!");
+println!("\nYou attack {enemy_name} causing {power} damage!!");
 println!("\n{enemy_name} now has {enemy_hp} hp left!\n");
 
 }
@@ -54,14 +56,38 @@ if selection.to_lowercase().contains("check") {//displays enemy's stats
 }
 
 
-if selection.to_lowercase().contains("Skill") {println!("no skills yet :)")}
+if selection.to_lowercase().contains("skill") {println!("Which skill would you like to use?");              //skills
+println!("crap");
+let mut skills = String::new();
+
+io::stdin()
+.read_line(&mut skills)
+.expect("You cannot do that");                                             //selections          
+print!("{}[2J", 27 as char);
+
+if skills.to_lowercase().contains("heal"){hp = hp + healing;
+println!("You healed for {healing}\n");
+};
+
+if skills.to_lowercase().contains("guard"){println!("gaming")};//not done
+
+
+}
+
 
 
 if ran_away == true {break;}//breaks loop if run succeeded
 
  //else { println! ("You can't do that");} //guhh??
-if enemy_hp < 0 {println!("you win!!"); break;} 
-selection.truncate(0);
+if enemy_hp < 1 {println!("you win!!"); break;} 
+selection.truncate(0);//clears selection
+
+                                                 //enemy attack
+hp = hp - enemyatt;
+println!("Enemy attacks you for {enemyatt} DMG\n");
+
+if hp < 1 { println!("You died"); break;}
+
 }//end of battle loop
 
 }
