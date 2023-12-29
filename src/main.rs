@@ -20,8 +20,8 @@ let hp = 100;//hp will not reset after fights later
 let power = rand::thread_rng().gen_range(15..=20);
 
 loop {//battle loop start
-let ran_away = false;    
 
+    let mut ran_away = false;
 
 println!("HP:{hp}");//the battle intro
 println!("ATTACK POWER:{power}\n");
@@ -45,7 +45,7 @@ println!("\n{enemy_name} now has {enemy_hp} hp left!\n");
 
 }
 //add attack doing something
-if selection.to_lowercase().contains("run") { let ran_away = running(); } //FIX
+if selection.to_lowercase().contains("run") {ran_away = running(); } //FIX
 
 
 if selection.to_lowercase().contains("check") {//displays enemy's stats
@@ -70,10 +70,10 @@ fn running() -> bool
 let running_chance = rand::thread_rng().gen_range(0..=100);
 
 
-let ran_away = false;
-if running_chance < 50 { let ran_away = true; println!("\nyou ran away!!\n");}
+let mut ran_away = false;
+if running_chance < 50 { ran_away = true; println!("\nyou ran away!!\n");}
 
-else if running_chance > 50 { let ran_away =false; println!("\nYou failed to run away :(\n");}//succeeding on running
+else if running_chance > 50 { ran_away =false; println!("\nYou failed to run away :(\n");}//succeeding on running
 return ran_away;
 }
 
