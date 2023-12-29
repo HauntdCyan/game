@@ -2,19 +2,9 @@ use rand::Rng; //to do list: make skills and run function work
 use std::io;
 
 fn main(){
+    let (enemy_name, mut enemy_hp, enemyatt) = enemystats();//enemy stats
 
-let enemy = ["Slime", "Cool_guy", "Among_us_impostor", "Jerma_from_twitchtv"];//enemy name n stats
-let enemyhp = rand::thread_rng().gen_range(100..=200);
-let enemyatt = rand::thread_rng().gen_range(15..=25);
-
-
-
-let enemyrng = rand::thread_rng().gen_range(0..=3);//enemy selection
-
-let enemy_name = enemy[enemyrng];
-let mut enemy_hp = enemyhp;
-
-println!("{enemy_name} appears!! HP: {enemyhp} ATT: {enemyatt}\n",);
+println!("{enemy_name} appears!! HP: {enemy_hp} ATT: {enemyatt}\n",);
 println!("BOB:");//PLACEHOLDER FOR PLAYER'S NAME
 let mut hp = 100;//hp will not reset after fights later
 let power = rand::thread_rng().gen_range(15..=20);
@@ -38,17 +28,14 @@ io::stdin()
 print!("{}[2J", 27 as char);                    //clears terminal
 
 if selection.to_lowercase().contains("attack"){                                 //attacking
-
- enemy_hp = enemy_hp - power;
-
+enemy_hp = enemy_hp - power;
 
 println!("\nYou attack {enemy_name} causing {power} damage!!");
 println!("\n{enemy_name} now has {enemy_hp} hp left!\n");
-
 }
-//add attack doing something
-if selection.to_lowercase().contains("run") {ran_away = running(); } //FIX
 
+if selection.to_lowercase().contains("run") {ran_away = running(); }
+if ran_away == true {break;}
 
 if selection.to_lowercase().contains("check") {//displays enemy's stats
     println!("\n\n{enemy_name}:");
@@ -59,7 +46,7 @@ if selection.to_lowercase().contains("check") {//displays enemy's stats
 if selection.to_lowercase().contains("skill"){ hp= skills(hp,healing);}              //skills
 
 
-if ran_away == true {break;}//breaks loop if run succeeded
+//breaks loop if run succeeded
 
  //else { println! ("You can't do that");} //guhh??
 if enemy_hp < 1 {println!("you win!!"); break;} 
@@ -77,28 +64,27 @@ if hp < 1 { println!("You died"); break;}
 
 
 fn running() -> bool
-{//running chance
-let running_chance = rand::thread_rng().gen_range(0..=100);
+{
+let running_chance = rand::thread_rng().gen_range(0..=70);//running chance
 
 
 let mut ran_away = false;
 if running_chance < 50 { ran_away = true; println!("\nyou ran away!!\n");}
 
-else if running_chance > 50 { ran_away =false; println!("\nYou failed to run away :(\n");}//succeeding on running
+else if running_chance > 50 { ran_away =false; println!("\nYou failed to run away :(\n");}
 return ran_away;
 }
 
 
-fn skills(mut hp:i32,healing:i32) -> i32                           //skills
-{
+fn skills(mut hp:i32,healing:i32) -> i32{           //skills
    
     println!("\nWhich skill would you like to use?");
     println!("HEAL, GUARD");
     let mut skills = String::new();
     
-    io::stdin()
+    io::stdin()//skill selection
     .read_line(&mut skills)
-    .expect("You cannot do that");                                             //selections          
+    .expect("You cannot do that");                                                      
     print!("{}[2J", 27 as char);
     
     if skills.to_lowercase().contains("heal"){hp = hp + healing;
@@ -110,7 +96,18 @@ fn skills(mut hp:i32,healing:i32) -> i32                           //skills
     }
     
 
-fn stats(){
+fn enemystats() -> (&'static str, i32, i32) {
 
-    
+let enemy = ["Slime", "Cool_guy", "Among_us_impostor", "Jerma_from_twitchtv"];//enemy name n stats
+let enemyhp = rand::thread_rng().gen_range(100..=200);
+let enemyatt = rand::thread_rng().gen_range(15..=25);
+
+let enemyrng = rand::thread_rng().gen_range(0..=3);//enemy selection
+
+
+
+let enemy_name = enemy[enemyrng];
+let enemy_hp = enemyhp;
+
+return (enemy_name, enemy_hp, enemyatt)
 }
