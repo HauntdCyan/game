@@ -10,13 +10,14 @@ let enemyatt = rand::thread_rng().gen_range(15..=25);
 
 
 let enemyrng = rand::thread_rng().gen_range(0..=3);//enemy selection
+
 let enemy_name = enemy[enemyrng];
+let mut enemy_hp = enemyhp;
 
-
-println!("{enemy_name} appears!!\n",);
+println!("{enemy_name} appears!! {enemyhp}HP {enemyatt}ATT \n",);
 println!("{enemy_name}");
 let hp = 100;//hp will not reset after fights later
-let power = 20;
+let power = rand::thread_rng().gen_range(15..=20);
 
 loop {//battle loop start
 let ran_away = false;    
@@ -30,18 +31,29 @@ let mut selection = String::new();
 
 io::stdin()
 .read_line(&mut selection)
-.expect("You cannot do that");
+.expect("You cannot do that");                                             //selections
 
-if selection.to_lowercase().contains("attack"){println!("\nyou do a thing");}
+if selection.to_lowercase().contains("attack"){                                 //attacking
 
-if selection.to_lowercase().contains("run"){let ran_away = running();}//functions activates no matter what
-println!("{ran_away}");//test
-//running output
+let mut new_enemy_hp = enemy_hp - power;
+
+let mut enemy_hp = new_enemy_hp;
+
+
+println!("\nYou attack {enemy_name} causing {power}damage!!");
+println!("\n{enemy_name} now has {enemy_hp} hp left!\n");
+
+}
+//add attack doing something
+if selection.to_lowercase().contains("run") { let ran_away = running(); }
+
+if selection.to_lowercase().contains("Skill") {println!("no skills yet :)")}
+
 
 if ran_away == true {break;}//breaks loop if run succeeded
 
  //else { println! ("You can't do that");} //guhh??
-println!(" ene test {enemyhp}");// enemy hp test
+//println!(" ene test {enemyhp}");// enemy hp test
 //add choice slection and turns for battles with loops
 
 selection.truncate(0);
@@ -54,7 +66,7 @@ let running_chance = rand::thread_rng().gen_range(0..=100);
 
 
 let ran_away = false;
-if running_chance < 50 {println!("\nyou ran away!!\n"); let ran_away = true;}
+if running_chance < 50 { let ran_away = true; println!("\nyou ran away!!\n");}
 
 else if running_chance > 50 { let ran_away =false; println!("\nYou failed to run away :(\n");}//succeeding on running
 return ran_away;
