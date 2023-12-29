@@ -21,7 +21,7 @@ let power = rand::thread_rng().gen_range(15..=20);
 
 loop {//battle loop start
 let healing = rand::thread_rng().gen_range(20..=40); //skills
-let guard = rand::thread_rng().gen_range(5..=20);            //finish
+let guard = rand::thread_rng().gen_range(5..=20);
    
     let mut ran_away = false;
 
@@ -56,24 +56,7 @@ if selection.to_lowercase().contains("check") {//displays enemy's stats
 }
 
 
-if selection.to_lowercase().contains("skill") {println!("Which skill would you like to use?");              //skills
-println!("crap");
-let mut skills = String::new();
-
-io::stdin()
-.read_line(&mut skills)
-.expect("You cannot do that");                                             //selections          
-print!("{}[2J", 27 as char);
-
-if skills.to_lowercase().contains("heal"){hp = hp + healing;
-println!("You healed for {healing}\n");
-};
-
-if skills.to_lowercase().contains("guard"){println!("gaming")};//not done
-
-
-}
-
+if selection.to_lowercase().contains("skill"){ hp= skills(hp,healing);}              //skills
 
 
 if ran_away == true {break;}//breaks loop if run succeeded
@@ -91,6 +74,8 @@ if hp < 1 { println!("You died"); break;}
 }//end of battle loop
 
 }
+
+
 fn running() -> bool
 {//running chance
 let running_chance = rand::thread_rng().gen_range(0..=100);
@@ -104,3 +89,28 @@ return ran_away;
 }
 
 
+fn skills(mut hp:i32,healing:i32) -> i32                           //skills
+{
+   
+    println!("\nWhich skill would you like to use?");
+    println!("HEAL, GUARD");
+    let mut skills = String::new();
+    
+    io::stdin()
+    .read_line(&mut skills)
+    .expect("You cannot do that");                                             //selections          
+    print!("{}[2J", 27 as char);
+    
+    if skills.to_lowercase().contains("heal"){hp = hp + healing;
+    println!("You healed for {healing}\n");
+    };
+    
+    if skills.to_lowercase().contains("guard"){println!("gaming")};//not done
+    return hp
+    }
+    
+
+fn stats(){
+
+    
+}
