@@ -2,9 +2,9 @@ use rand::Rng; //to do list: make skills and run function work
 use std::io;
 
 fn main(){
-    let (enemy_name, mut enemy_hp, enemyatt) = enemystats();//enemy stats
+let EnemyStats {enemy_name, mut enemyhp, enemyatt};//enemy stats
 
-println!("{enemy_name} appears!! HP: {enemy_hp} ATT: {enemyatt}\n",);
+println!("{enemy_name} appears!! HP: {enemyhp} ATT: {enemyatt}\n",);
 println!("BOB:");//PLACEHOLDER FOR PLAYER'S NAME
 let mut hp = 100;//hp will not reset after fights later
 let power = rand::thread_rng().gen_range(15..=20);
@@ -28,10 +28,10 @@ io::stdin()
 print!("{}[2J", 27 as char);                    //clears terminal
 
 if selection.to_lowercase().contains("attack"){                                 //attacking
-enemy_hp = enemy_hp - power;
+enemyhp = enemyhp - power;
 
 println!("\nYou attack {enemy_name} causing {power} damage!!");
-println!("\n{enemy_name} now has {enemy_hp} hp left!\n");
+println!("\n{enemy_name} now has {enemyhp} hp left!\n");
 }
 
 if selection.to_lowercase().contains("run") {ran_away = running(); }
@@ -39,7 +39,7 @@ if ran_away == true {break;}
 
 if selection.to_lowercase().contains("check") {//displays enemy's stats
     println!("\n\n{enemy_name}:");
-    println!("{enemy_hp}HP {enemyatt}ATT\n\n"); continue;
+    println!("{enemyhp}HP {enemyatt}ATT\n\n"); continue;
 }
 
 
@@ -49,7 +49,7 @@ if selection.to_lowercase().contains("skill"){ hp= skills(hp,healing);}         
 //breaks loop if run succeeded
 
  //else { println! ("You can't do that");} //guhh??
-if enemy_hp < 1 {println!("you win!!"); break;} 
+if enemyhp < 1 {println!("you win!!"); break;} 
 selection.truncate(0);//clears selection
 
                                                  //enemy attack
@@ -94,20 +94,32 @@ fn skills(mut hp:i32,healing:i32) -> i32{           //skills
     if skills.to_lowercase().contains("guard"){println!("gaming")};//not done
     return hp
     }
+
+struct EnemyStats
+{
+    enemy_name: &'static str,
+    enemyhp: i32,
+    enemyatt: i32,
+}
+
+fn enemystats() -> EnemyStats {
+
     
+let enemy_names = ["Slime", "Cool_guy", "Among_us_impostor", "Jerma_from_twitchtv"];//enemy name n stats
 
-fn enemystats() -> (&'static str, i32, i32) {
+let enemyrng = rand::thread_rng().gen_range(0..=3);//enemy selection
+let enemy_name = enemy_names[enemyrng];
 
-let enemy = ["Slime", "Cool_guy", "Among_us_impostor", "Jerma_from_twitchtv"];//enemy name n stats
 let enemyhp = rand::thread_rng().gen_range(100..=200);
 let enemyatt = rand::thread_rng().gen_range(15..=25);
 
-let enemyrng = rand::thread_rng().gen_range(0..=3);//enemy selection
+let EnemyStats = EnemyStats
+{
+    enemy_name: enemy_name,
+    enemyhp: enemyhp,
+    enemyatt: enemyatt,
+};
+return EnemyStats;
 
 
-
-let enemy_name = enemy[enemyrng];
-let enemy_hp = enemyhp;
-
-return (enemy_name, enemy_hp, enemyatt)
 }
