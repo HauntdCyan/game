@@ -2,7 +2,7 @@ use rand::Rng; //to do list: make skills and run function work
 use std::io;
 
 fn main(){
-let EnemyStats {enemy_name, mut enemyhp, enemyatt};//enemy stats
+let (enemyhp, enemyatt, enemy_name) = EnemyValues {enemy_name, enemyhp,enemyatt:enemyatt};//enemy statss
 
 println!("{enemy_name} appears!! HP: {enemyhp} ATT: {enemyatt}\n",);
 println!("BOB:");//PLACEHOLDER FOR PLAYER'S NAME
@@ -95,14 +95,14 @@ fn skills(mut hp:i32,healing:i32) -> i32{           //skills
     return hp
     }
 
-struct EnemyStats
+struct EnemyValues
 {
     enemy_name: &'static str,
     enemyhp: i32,
     enemyatt: i32,
 }
 
-fn enemystats() -> EnemyStats {
+fn enemystats() -> EnemyValues {
 
     
 let enemy_names = ["Slime", "Cool_guy", "Among_us_impostor", "Jerma_from_twitchtv"];//enemy name n stats
@@ -113,13 +113,14 @@ let enemy_name = enemy_names[enemyrng];
 let enemyhp = rand::thread_rng().gen_range(100..=200);
 let enemyatt = rand::thread_rng().gen_range(15..=25);
 
-let EnemyStats = EnemyStats
+let enemy_stats = EnemyValues
 {
     enemy_name: enemy_name,
     enemyhp: enemyhp,
     enemyatt: enemyatt,
 };
-return EnemyStats;
+return enemy_stats
+;
 
 
 }
