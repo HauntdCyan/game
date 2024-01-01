@@ -2,7 +2,7 @@ use rand::Rng; //to do list: make skills and run function work
 use std::io;
 
 fn main(){
-let (enemyhp, enemyatt, enemy_name) = EnemyValues {enemy_name, enemyhp,enemyatt:enemyatt};//enemy statss
+let EnemyValues {enemyatt: mut enemyatt, enemy_name: mut enemy_name, enemyhp: mut enemyhp };//enemy statss
 
 println!("{enemy_name} appears!! HP: {enemyhp} ATT: {enemyatt}\n",);
 println!("BOB:");//PLACEHOLDER FOR PLAYER'S NAME
