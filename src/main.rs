@@ -1,11 +1,11 @@
-use rand::Rng; //to do list: make skills and run function work
+use rand::Rng; //FIX ENEMY ATTACK SO ITS RANDOM
 use std::io;
 
 fn main(){
-let enemy = enemystats();//enemy statss
-let enemy_name, enemyhp, enemyatt;
+let mut enemy = enemystats();//enemy statss
 
-println!("{enemy_name} appears!! HP: {enemyhp} ATT: {enemyatt}\n",);
+
+println!("{} appears!! HP: {} ATT: {}\n",enemy.enemy_name, enemy.enemyhp, enemy.enemyatt);
 println!("BOB:");//PLACEHOLDER FOR PLAYER'S NAME
 let mut hp = 100;//hp will not reset after fights later
 let power = rand::thread_rng().gen_range(15..=20);
@@ -16,9 +16,9 @@ let guard = rand::thread_rng().gen_range(5..=20);
    
     let mut ran_away = false;
 
-println!("HP:{hp}");//the battle intro
+println!("HP:{hp}"); 
 println!("ATTACK POWER:20\n");
-println!("What will you do?");
+println!("What will you do?");                                                    //FIX ENEMY ATTACK SO ITS RANDOM
 println!("ATTACK SKILL CHECK RUN");
 
 let mut selection = String::new();
@@ -29,18 +29,18 @@ io::stdin()
 print!("{}[2J", 27 as char);                    //clears terminal
 
 if selection.to_lowercase().contains("attack"){                                 //attacking
-enemyhp = enemyhp - power;
+enemy.enemyhp = enemy.enemyhp - power;
 
-println!("\nYou attack {enemy_name} causing {power} damage!!");
-println!("\n{enemy_name} now has {enemyhp} hp left!\n");
+println!("\nYou attack {} causing {power} damage!!",enemy.enemy_name);
+println!("\n{} now has {} hp left!\n",enemy.enemy_name, enemy.enemyhp);
 }
 
 if selection.to_lowercase().contains("run") {ran_away = running(); }
 if ran_away == true {break;}
 
 if selection.to_lowercase().contains("check") {//displays enemy's stats
-    println!("\n\n{enemy_name}:");
-    println!("{enemyhp}HP {enemyatt}ATT\n\n"); continue;
+    println!("\n\n{}:",enemy.enemy_name);
+    println!("{}HP {}ATT\n\n",enemy.enemyhp, enemy.enemyatt); continue;
 }
 
 
@@ -50,12 +50,12 @@ if selection.to_lowercase().contains("skill"){ hp= skills(hp,healing);}         
 //breaks loop if run succeeded
 
  //else { println! ("You can't do that");} //guhh??
-if enemyhp < 1 {println!("you win!!"); break;} 
+if enemy.enemyhp < 1 {println!("you win!!"); break;} 
 selection.truncate(0);//clears selection
 
                                                  //enemy attack
-hp = hp - enemyatt;
-println!("Enemy attacks you for {enemyatt} DMG\n");
+hp = hp - enemy.enemyatt;
+println!("Enemy attacks you for {} DMG\n",enemy.enemyatt);
 
 if hp < 1 { println!("You died"); break;}
 
