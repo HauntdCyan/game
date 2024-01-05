@@ -3,17 +3,18 @@ use std::io;
 
 fn main(){
 let mut enemy = enemystats();//enemy statss
-
-
-println!("{} appears!! HP: {} ATT: {}\n",enemy.enemy_name, enemy.enemyhp, enemy.enemyatt);
-println!("BOB:");//PLACEHOLDER FOR PLAYER'S NAME
-let mut hp = 100;//hp will not reset after fights later
-let power = rand::thread_rng().gen_range(15..=20);
-
+let mut turn = 0;//turn counter
 loop {//battle loop start
-let healing = rand::thread_rng().gen_range(20..=40); //skills
+let enemyatt = rand::thread_rng().gen_range(15..=25);
+    if turn == 0{
+    println!("{} appears!! HP: {} ATT: {}\n",enemy.enemy_name, enemy.enemyhp, enemyatt);
+println!("BOB:");//PLACEHOLDER FOR PLAYER'S NAME
+}
+let mut hp = 100;//hp will not reset after fights later
+let power = rand::thread_rng().gen_range(15..=20);//player attack
+
+    let healing = rand::thread_rng().gen_range(20..=40); //skills
 let guard = rand::thread_rng().gen_range(5..=20);
-   
     let mut ran_away = false;
 
 println!("HP:{hp}"); 
@@ -40,7 +41,7 @@ if ran_away == true {break;}
 
 if selection.to_lowercase().contains("check") {//displays enemy's stats
     println!("\n\n{}:",enemy.enemy_name);
-    println!("{}HP {}ATT\n\n",enemy.enemyhp, enemy.enemyatt); continue;
+    println!("{}HP {}ATT\n\n",enemy.enemyhp, enemyatt); continue;
 }
 
 
@@ -54,11 +55,11 @@ if enemy.enemyhp < 1 {println!("you win!!"); break;}
 selection.truncate(0);//clears selection
 
                                                  //enemy attack
-hp = hp - enemy.enemyatt;
-println!("Enemy attacks you for {} DMG\n",enemy.enemyatt);
+hp = hp - enemyatt;
+println!("{} attacks you for {} DMG\n",enemy.enemy_name,enemyatt);
 
 if hp < 1 { println!("You died"); break;}
-
+turn += 1;//adds 1
 }//end of battle loop
 
 }
@@ -100,7 +101,6 @@ struct EnemyValues
 {
     enemy_name: &'static str,
     enemyhp: i32,
-    enemyatt: i32,
 }
 
 fn enemystats() -> EnemyValues {
@@ -110,15 +110,12 @@ let enemy_names = ["Slime", "Cool_guy", "Among_us_impostor", "Jerma_from_twitcht
 
 let enemyrng = rand::thread_rng().gen_range(0..=3);//enemy selection
 let enemy_name = enemy_names[enemyrng];
-
 let enemyhp = rand::thread_rng().gen_range(100..=200);
-let enemyatt = rand::thread_rng().gen_range(15..=25);
 
 let enemy_stats = EnemyValues
 {
     enemy_name: enemy_name,
     enemyhp: enemyhp,
-    enemyatt: enemyatt,
 };
 return enemy_stats
 ;
