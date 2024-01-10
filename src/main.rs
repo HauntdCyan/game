@@ -61,13 +61,15 @@ fn who_are_you() -> String
 fn battle(playername: &str){
     let mut enemy = enemystats();//enemy statss
     let mut turn = 0;//turn counter
+    let mut hp = 100;//hp will not reset after fights later
+    
     loop {//battle loop start
     let enemyatt = rand::thread_rng().gen_range(15..=25);
         if turn == 0{
         println!("{} appears!! HP: {} ATT: {}\n",enemy.enemy_name, enemy.enemyhp, enemyatt);
     println!("{playername}");//PLACEHOLDER FOR PLAYER'S NAME
     }
-    let mut hp = 100;//hp will not reset after fights later
+    
     let power = rand::thread_rng().gen_range(15..=20);//player attack
     
         let healing = rand::thread_rng().gen_range(20..=40); //skills
@@ -112,7 +114,7 @@ fn battle(playername: &str){
     selection.truncate(0);//clears selection
     
                                                      //enemy attack
-    let hp = hp - enemyatt;
+    hp = hp - enemyatt;
     println!("{} attacks you for {} DMG\n",enemy.enemy_name,enemyatt);
     
     if hp < 1 { println!("You died"); break;}

@@ -1,4 +1,4 @@
-use rand::Rng; //FIX ENEMY ATTACK SO ITS RANDOM
+use rand::Rng; //
 use std::io;
 
 fn main(){
