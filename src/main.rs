@@ -9,7 +9,7 @@ fn main()                                                            //main
 
     // Call the "who are you" function. This function returns our name and puts it into the name variable.
     let playername: String = who_are_you();
-battle(playername);
+battle(&playername);
 
 
 
@@ -42,7 +42,7 @@ fn who_are_you() -> String
         // If the name variable is equal to "y". The ".to_lowercase()" method just allows us for case insensitive.
         if choice.to_lowercase() == "y"
         {
-            println!("Welcome to the gaem!");
+            println!("\n\nWelcome to the gaem!\n\n");
 
             // This exits the function and returns the data in the variable "name".
             return playername
@@ -58,14 +58,14 @@ fn who_are_you() -> String
 
 
 
-fn battle(){
+fn battle(playername: &str){
     let mut enemy = enemystats();//enemy statss
     let mut turn = 0;//turn counter
     loop {//battle loop start
     let enemyatt = rand::thread_rng().gen_range(15..=25);
         if turn == 0{
         println!("{} appears!! HP: {} ATT: {}\n",enemy.enemy_name, enemy.enemyhp, enemyatt);
-    println!("BOB:");//PLACEHOLDER FOR PLAYER'S NAME
+    println!("{playername}");//PLACEHOLDER FOR PLAYER'S NAME
     }
     let mut hp = 100;//hp will not reset after fights later
     let power = rand::thread_rng().gen_range(15..=20);//player attack
@@ -112,7 +112,7 @@ fn battle(){
     selection.truncate(0);//clears selection
     
                                                      //enemy attack
-    hp = hp - enemyatt;
+    let hp = hp - enemyatt;
     println!("{} attacks you for {} DMG\n",enemy.enemy_name,enemyatt);
     
     if hp < 1 { println!("You died"); break;}
