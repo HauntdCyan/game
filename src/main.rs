@@ -9,9 +9,15 @@ fn main()                                                            //main
 
     // Call the "who are you" function. This function returns our name and puts it into the name variable.
     let playername: String = who_are_you();
-battle(&playername);
+    
+    let mut hp = 100;//hp will not reset after fights later
+let mut weapondmg = 20;
+let mut healingstrength = 40;
+
+    battle(&playername,hp,healingstrength,weapondmg);
 
 
+//add drops and a way to adjust enemy hp/attack per encounter AND make hp not change after battle
 
 
 
@@ -58,26 +64,26 @@ fn who_are_you() -> String
 
 
 
-fn battle(playername: &str){
+fn battle(playername: &str,mut hp:i32,healingstrength:i32,weapondmg:i32){
     let mut enemy = enemystats();//enemy statss
     let mut turn = 0;//turn counter
-    let mut hp = 100;//hp will not reset after fights later
+    
     
     loop {//battle loop start
     let enemyatt = rand::thread_rng().gen_range(15..=25);
         if turn == 0{
-        println!("{} appears!! HP: {} ATT: {}\n",enemy.enemy_name, enemy.enemyhp, enemyatt);
+        println!("\n\n{} appears!! HP: {} ATT: {}\n",enemy.enemy_name, enemy.enemyhp, enemyatt);
     println!("{playername}");//PLACEHOLDER FOR PLAYER'S NAME
     }
     
-    let power = rand::thread_rng().gen_range(15..=20);//player attack
+    let power = rand::thread_rng().gen_range(15..={weapondmg});//player attack
     
-        let healing = rand::thread_rng().gen_range(20..=40); //skills
+        let healing = rand::thread_rng().gen_range(20..={healingstrength}); //skills
     let guard = rand::thread_rng().gen_range(5..=20);
         let mut ran_away = false;
     
     println!("HP:{hp}"); 
-    println!("ATTACK POWER:20\n");
+    println!("ATTACK POWER:{}\n",weapondmg);
     println!("What will you do?");                                                    //FIX ENEMY ATTACK SO ITS RANDOM
     println!("ATTACK SKILL CHECK RUN");
     
