@@ -1,10 +1,9 @@
-use std::{io, string};
+use std::io;
 use rand::Rng;
 
 
 fn main()                                                            //main
 {
-    let mut winning = true;
     // Greet the user and welcome them to the game.
     println!("\n\nHello welcome to the gaem!");
 
@@ -15,12 +14,10 @@ fn main()                                                            //main
 let mut weapondmg = 200000000;
 let mut healingstrength = 40;
 
-winning = battle(&playername,hp,healingstrength,weapondmg);  if winning == false {std::process::exit(0) };//battles
-println! ("YOU HP IS {}",hp);
-winning = battle(&playername,hp,healingstrength,weapondmg);  if winning == false {std::process::exit(0) };                    //return hp
-
+let (hp,winning) = battle(&playername,hp,healingstrength,weapondmg);  if winning == false {std::process::exit(0) };//battles
+                 //return hp
+let (hp,winning) = battle(&playername,hp,healingstrength,weapondmg);  if winning == false {std::process::exit(0) };//battles
 //add drops and a way to adjust enemy hp/attack per encounter AND make hp not change after battle
-
 
 
 }
@@ -65,8 +62,9 @@ fn who_are_you() -> String
 
 
 
-fn battle(playername: &str,mut hp:i32,healingstrength:i32,weapondmg:i32) -> bool
+fn battle(playername: &str,mut hp:i32,healingstrength:i32,weapondmg:i32) -> (i32,bool)
 {
+    let mut winning = true;
     let mut enemy = enemystats();//enemy statss
     let mut turn = 0;//turn counter
     
@@ -104,7 +102,7 @@ fn battle(playername: &str,mut hp:i32,healingstrength:i32,weapondmg:i32) -> bool
     }
     
     if selection.to_lowercase().contains("run") {ran_away = running(); }
-    if ran_away == true {break true;}
+    if ran_away == true {winning = true; return (hp,winning);}
     
     if selection.to_lowercase().contains("check") {//displays enemy's stats
         println!("\n\n{}:",enemy.enemy_name);
@@ -118,14 +116,14 @@ fn battle(playername: &str,mut hp:i32,healingstrength:i32,weapondmg:i32) -> bool
     //breaks loop if run succeeded
     
      //else { println! ("You can't do that");} //guhh??
-    if enemy.enemyhp < 1 {println!("you win!!"); let winning = true; return winning;}               // return hp
+    if enemy.enemyhp < 1 {println!("you win!!");let winning = true; return (hp, winning);}               // return hp
     selection.truncate(0);//clears selection
     
                                                      //enemy attack
     hp = hp - enemyatt;
     println!("{} attacks you for {} DMG\n",enemy.enemy_name,enemyatt);
     
-    if hp < 1 { println!("You died");let winning = false; return winning;}
+    if hp < 1 { println!("You died");let winning = false; return (hp, winning);}
     turn += 1;//adds 1
     }//end of battle loop
     
