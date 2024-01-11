@@ -16,8 +16,8 @@ let mut weapondmg = 200000000;
 let mut healingstrength = 40;
 
 winning = battle(&playername,hp,healingstrength,weapondmg);  if winning == false {std::process::exit(0) };//battles
-
-winning = battle(&playername,hp,healingstrength,weapondmg);  if winning == false {std::process::exit(0) };
+println! ("YOU HP IS {}",hp);
+winning = battle(&playername,hp,healingstrength,weapondmg);  if winning == false {std::process::exit(0) };                    //return hp
 
 //add drops and a way to adjust enemy hp/attack per encounter AND make hp not change after battle
 
@@ -118,7 +118,7 @@ fn battle(playername: &str,mut hp:i32,healingstrength:i32,weapondmg:i32) -> bool
     //breaks loop if run succeeded
     
      //else { println! ("You can't do that");} //guhh??
-    if enemy.enemyhp < 1 {println!("you win!!"); let winning = true; return winning;} 
+    if enemy.enemyhp < 1 {println!("you win!!"); let winning = true; return winning;}               // return hp
     selection.truncate(0);//clears selection
     
                                                      //enemy attack
