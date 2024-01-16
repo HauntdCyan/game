@@ -37,7 +37,7 @@ fn who_are_you() -> String
         io::stdin().read_line(&mut playername).unwrap();
         playername.truncate(playername.len() - 2);
         
-        println!("\nYour name is: {playername}\nAre you sure you want to use this name? (Y/n)");
+        println!("\nYour name is: {}\nAre you sure you want to use this name? (Y/n)",playername);
         io::stdin().read_line(&mut choice).unwrap();
         choice.truncate(choice.len() - 2);
 
