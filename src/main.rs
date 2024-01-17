@@ -3,9 +3,9 @@ fn main(){
 
     opendoors();
 //let doors = Doorsopen {left, right, middle};
-    if doors.left == true {println!("shit it  left")};
-    if doors.middle == true {println!("shit it  middle")};
-    if doors.right == true {println!("shit it  right")};
+    if Doorsopen.left == true {println!("shit it  left")};
+    if Doorsopen.middle == true {println!("shit it  middle")};
+    if Doorsopen.right == true {println!("shit it  right")};
     roomtype()
 //println!("left:{} Mid:{} Right:{}",leftdoor,middledoor,rightdoor);
 
@@ -33,7 +33,7 @@ if directions == 5 {randomization_turn += 1; rightdoor  = true;}
 
 if leftdoor || middledoor || rightdoor {if randomization_turn > 3 {
     
-    let doorsopen = Doorsopen{
+let doorsopen = Doorsopen{
 left:leftdoor,
 middle:middledoor,
 right:rightdoor};
