@@ -1,11 +1,11 @@
 use rand::Rng; //
-use std::{io, collections::btree_map::Values};
 fn main(){
 
     opendoors();
-    if opendoors.middledoor = true {println!("mid door open")};
-    
-    
+//let doors = Doorsopen {left, right, middle};
+    if doors.left == true {println!("shit it  left")};
+    if doors.middle == true {println!("shit it  middle")};
+    if doors.right == true {println!("shit it  right")};
     roomtype()
 //println!("left:{} Mid:{} Right:{}",leftdoor,middledoor,rightdoor);
 
@@ -34,9 +34,9 @@ if directions == 5 {randomization_turn += 1; rightdoor  = true;}
 if leftdoor || middledoor || rightdoor {if randomization_turn > 3 {
     
     let doorsopen = Doorsopen{
-leftdoor:leftdoor,
-middledoor:middledoor,
-rightdoor:rightdoor};
+left:leftdoor,
+middle:middledoor,
+right:rightdoor};
     
     return doorsopen
 }}
@@ -52,9 +52,9 @@ rightdoor:rightdoor};
 
 struct Doorsopen{
 
-leftdoor:bool,
-middledoor:bool,
-rightdoor:bool
+left:bool,
+middle:bool,
+right:bool
 }
 
 fn roomtype(){
