@@ -1,11 +1,11 @@
 use rand::Rng; //
 fn main(){
 
-    opendoors();
+   let Doorsopen = opendoors();
 //let doors = Doorsopen {left, right, middle};
-    if Doorsopen.left == true {println!("shit it  left")};
-    if Doorsopen.middle == true {println!("shit it  middle")};
-    if Doorsopen.right == true {println!("shit it  right")};
+    if Doorsopen.left == true {println!("shit it left")};
+    if Doorsopen.middle == true {println!("shit it middle")};
+    if Doorsopen.right == true {println!("shit it right")};
     roomtype()
 //println!("left:{} Mid:{} Right:{}",leftdoor,middledoor,rightdoor);
 
@@ -42,7 +42,7 @@ right:rightdoor};
 }}
 
 
-}
+}//reuse functions for thing and do another thing with it!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 
 
 
