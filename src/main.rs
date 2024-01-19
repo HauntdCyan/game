@@ -1,7 +1,7 @@
 use rand::Rng; //
 fn main(){
 
-   let Doorsopen = opendoors();
+   let Doorsopen = randomization();
 //let doors = Doorsopen {left, right, middle};
     if Doorsopen.left == true {println!("shit it left")};
     if Doorsopen.middle == true {println!("shit it middle")};
@@ -11,7 +11,7 @@ fn main(){
 
 }
 
-fn opendoors() -> Doorsopen
+fn randomization() -> Doorsopen
 {
 let mut leftdoor = false;
 let mut middledoor = false;
@@ -30,6 +30,7 @@ if directions == 1 || directions == 2 {randomization_turn += 1;}
 if directions == 3 {randomization_turn += 1; leftdoor  = true;}
 if directions == 4 {randomization_turn += 1; middledoor  = true;}
 if directions == 5 {randomization_turn += 1; rightdoor  = true;}
+
 
 if leftdoor || middledoor || rightdoor {if randomization_turn > 3 {
     
