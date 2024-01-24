@@ -41,7 +41,9 @@ if leftdoor || middledoor || rightdoor {if randomization_turn > 3 {
     
 let room = directions * randomization_turn + rand::thread_rng().gen_range(000..=500);
 
-if room >=400 {println!("cool!!!")}//WORK ON THIS
+if (room <= 500) || (room >= 400) {println!("cool!!!")}//WORK ON THIS
+
+
 
 println!("{room}");
 
