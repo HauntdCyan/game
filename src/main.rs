@@ -19,7 +19,7 @@ let mut leftdoor = false;
 let mut middledoor = false;
 let mut rightdoor = false;
 
-let roomtype = ["loot", "enemy", "boss", "empty", "camp"];
+let roomtype = ["boss", "enemy", "loot", "empty", "camp"];
 
 
 
@@ -39,13 +39,20 @@ if directions == 5 {number_of_directions += 1; randomization_turn += 1; rightdoo
 
 if leftdoor || middledoor || rightdoor {if randomization_turn > 3 {
     
-let room = directions * randomization_turn + rand::thread_rng().gen_range(000..=500);
+let room = directions * randomization_turn + rand::thread_rng().gen_range(0..=1000);
 
-if (room <= 500) || (room >= 400) {println!("cool!!!")}//WORK ON THIS
+loop {
+    
+if (0..=50).contains(&room) {let roomid = 1;}//use match instead
+if (51..=500).contains(&room) {let roomid = 2;}
+if (501..=600).contains(&room) {let roomid = 3;}
+if (601..=800).contains(&room) {let roomid = 4;}
+if (801..=1000).contains(&room) {let roomid = 5;}
+println!("{number_of_directions}");
+number_of_directions -= 1;
+if number_of_directions == 0 {break;};
+}
 
-
-
-println!("{room}");
 
 let doorsopen = Doorsopen{
 left:leftdoor,
@@ -62,7 +69,7 @@ right:rightdoor
 
 
 
-
+let door = door;
 
 }
 
