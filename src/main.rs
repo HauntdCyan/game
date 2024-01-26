@@ -19,14 +19,15 @@ let mut leftdoor = false;
 let mut middledoor = false;
 let mut rightdoor = false;
 
-let roomtype = ["boss", "enemy", "loot", "empty", "camp"];
+let roomtype = ["null","boss", "enemy", "loot", "empty", "camp"];
 
 
 
 let mut randomization_turn = 0;
+let mut number_of_directions = 0;
 loop{
 
-let mut number_of_directions = 0;
+
 
 let directions = rand::thread_rng().gen_range(1..=5); //left middle right doorways
 
@@ -39,18 +40,24 @@ if directions == 5 {number_of_directions += 1; randomization_turn += 1; rightdoo
 
 if leftdoor || middledoor || rightdoor {if randomization_turn > 3 {
     
-let room = directions * randomization_turn + rand::thread_rng().gen_range(0..=1000);
-
+}}}
+let mut roomid = 0;
 loop {
-    
-if (0..=50).contains(&room) {let roomid = 1;}//use match instead
-if (51..=500).contains(&room) {let roomid = 2;}
-if (501..=600).contains(&room) {let roomid = 3;}
-if (601..=800).contains(&room) {let roomid = 4;}
-if (801..=1000).contains(&room) {let roomid = 5;}
-println!("{number_of_directions}");
+let room = directions * randomization_turn + rand::thread_rng().gen_range(0..=1000);//random room type gen
+
+    match room {
+1..=50  => {roomid = 1;},
+51..=500 => {roomid = 2;},
+501..=600 =>{roomid = 3;},
+601..=800 =>{roomid = 4;},
+801..=1000 =>{roomid = 5;},
+_ => {println!("something went fucky lol");continue; }
+    }
+
+println!("room {}",roomid);
+
 number_of_directions -= 1;
-if number_of_directions == 0 {break;};
+if number_of_directions <= 0 {break;};
 }
 
 
@@ -62,14 +69,12 @@ right:rightdoor
 };
     
     return doorsopen
-}}
-
-
-}//reuse functions for thing and do another thing with it!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 
 
 
-let door = door;
+
+
+
 
 }
 
