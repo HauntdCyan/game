@@ -40,7 +40,7 @@ if directions == 5 {number_of_directions += 1; randomization_turn += 1; rightdoo
 
 if leftdoor || middledoor || rightdoor {if randomization_turn > 3 {
     
-}}}
+
 let mut roomid = 0;
 loop {
 let room = directions * randomization_turn + rand::thread_rng().gen_range(0..=1000);//random room type gen
@@ -69,10 +69,10 @@ right:rightdoor
 };
     
     return doorsopen
+}}
 
 
-
-
+}
 
 
 
