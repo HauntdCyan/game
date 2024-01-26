@@ -19,7 +19,7 @@ let mut leftdoor = false;
 let mut middledoor = false;
 let mut rightdoor = false;
 
-let roomtype = ["null","boss", "enemy", "loot", "empty", "camp"];
+let roomtype = ["null", "boss", "enemy", "loot", "empty", "camp"];
 
 
 
@@ -54,7 +54,7 @@ let room = directions * randomization_turn + rand::thread_rng().gen_range(0..=10
 501..=600 =>{roomid = 3;},
 601..=800 =>{roomid = 4;},
 801..=1000 =>{roomid = 5;},
-_ => {println!("something went fucky lol");continue; }
+_ => {println!("thing went over 1000");continue; }
     }
 
 println!("room {}",roomid);
