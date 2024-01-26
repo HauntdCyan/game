@@ -31,10 +31,13 @@ loop{
 
 let directions = rand::thread_rng().gen_range(1..=5); //left middle right doorways
 
-if directions == 1 || directions == 2 {randomization_turn += 1;}
-if directions == 3 {number_of_directions += 1; randomization_turn += 1; leftdoor  = true;}
-if directions == 4 {number_of_directions += 1; randomization_turn += 1; middledoor  = true;}
-if directions == 5 {number_of_directions += 1; randomization_turn += 1; rightdoor  = true;}
+match directions {
+1 | 2 => {randomization_turn += 1;},
+3 => {number_of_directions += 1; randomization_turn += 1; leftdoor  = true;},
+4 => {number_of_directions += 1; randomization_turn += 1; middledoor  = true;},
+5 => {number_of_directions += 1; randomization_turn += 1; rightdoor  = true;},
+_ => println!("something fucked up in the directions")
+};
 
 
 
@@ -85,10 +88,3 @@ middle:bool,
 right:bool
 }
 
-fn roomtype(){
-
-
-
-
-
-}
