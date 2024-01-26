@@ -41,12 +41,12 @@ _ => println!("something fucked up in the directions")
 
 
 
-if leftdoor || middledoor || rightdoor {if randomization_turn > 3 {
-    
+if leftdoor || middledoor || rightdoor {if randomization_turn > 3 { break; }
+}}
 
 let mut roomid = 0;
 loop {
-let room = directions * randomization_turn + rand::thread_rng().gen_range(0..=1000);//random room type gen
+let room = randomization_turn + rand::thread_rng().gen_range(0..=1000);//random room type gen
 
     match room {
 1..=50  => {roomid = 1;},
@@ -54,7 +54,7 @@ let room = directions * randomization_turn + rand::thread_rng().gen_range(0..=10
 501..=600 =>{roomid = 3;},
 601..=800 =>{roomid = 4;},
 801..=1000 =>{roomid = 5;},
-_ => {println!("thing went over 1000");continue; }
+_ => {println!("thing went over 1000");continue; }                                       //LOOPS MORE TIMES THAN IT SHOULD SOMETIMES
     }
 
 println!("room {}",roomid);
@@ -72,10 +72,10 @@ right:rightdoor
 };
     
     return doorsopen
-}}
 
 
-}
+
+
 
 
 
